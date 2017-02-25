@@ -30,7 +30,13 @@ class UserProfileEmployee extends Component {
         const displayName = this.refs.displayName.value;
         const emailSubresult = this.capitalizeFirstLetter(email.substring(0,email.indexOf('.')))
         +'_'+this.capitalizeFirstLetter(email.substring(email.indexOf('.')+1,email.indexOf('@')));
-        console.log(this.props.getUserTitle(emailSubresult));
+        console.log(this.props.getUserTitle(emailSubresult))
+
+        //once("value", function(snapshot) {
+          //  console.log(snapshot.val());
+          //});
+
+
         this.props.updateUser({ email, displayName }).then((data) => {
             if (data.payload.errorCode) {
                 this.setState({ message: data.payload.errorMessage });

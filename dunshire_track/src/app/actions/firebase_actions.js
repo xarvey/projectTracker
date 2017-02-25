@@ -8,6 +8,7 @@ import {
   CHANGE_FIREBASE_USER_PASSWORD,
   FIREBASE_PASSWORD_RESET_EMAIL,
   LOGOUT_FIREBASE_USER,
+  GET_USER_TITLE,
 } from './types';
 
 
@@ -76,11 +77,9 @@ export function logoutUser(user) {
 }
 
 export function getUserTitle(first_last) {
-  console.log(first_last)
   const request = FireBaseTools.getDatabaseReference('employees/'+first_last);
-  var title;
-  request.once("value", function(snapshot) {
-  console.log(snapshot.val());
-});
-
-}
+  return {
+    type: GET_USER_TITLE,
+    payload: request
+  };
+};
